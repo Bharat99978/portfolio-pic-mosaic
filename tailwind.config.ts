@@ -1,14 +1,13 @@
-import type { Config } from "tailwindcss";
+import { type Config } from "tailwindcss";
 
 export default {
   darkMode: ["class"],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
-  prefix: "",
   theme: {
     container: {
       center: true,
@@ -18,6 +17,16 @@ export default {
       },
     },
     extend: {
+      animation: {
+        "spin-slow": "spin 8s linear infinite",
+        "spin-reverse-slow": "spin-reverse 12s linear infinite",
+      },
+      keyframes: {
+        "spin-reverse": {
+          from: { transform: 'rotate(360deg)' },
+          to: { transform: 'rotate(0deg)' },
+        },
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -25,29 +34,15 @@ export default {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         primary: {
-          DEFAULT: "#FFD700",
+          DEFAULT: "rgb(34, 197, 94)",
           foreground: "#000000",
         },
         secondary: {
-          DEFAULT: "#C0C0C0",
+          DEFAULT: "rgb(16, 185, 129)",
           foreground: "#000000",
-        },
-      },
-      animation: {
-        "fade-in": "fadeIn 0.5s ease-in-out",
-        "slide-up": "slideUp 0.5s ease-out",
-      },
-      keyframes: {
-        fadeIn: {
-          "0%": { opacity: "0" },
-          "100%": { opacity: "1" },
-        },
-        slideUp: {
-          "0%": { transform: "translateY(20px)", opacity: "0" },
-          "100%": { transform: "translateY(0)", opacity: "1" },
         },
       },
     },
   },
   plugins: [require("tailwindcss-animate")],
-} satisfies Config;
+} satisfies Config

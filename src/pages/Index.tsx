@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Github, Instagram, Twitter, Phone, Mail, Globe } from "lucide-react";
+import { Github, Instagram, Twitter, Phone, Mail } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const Index = () => {
@@ -51,11 +51,24 @@ const Index = () => {
           transition={{ duration: 0.5 }}
           className="text-center"
         >
-          <img
-            src="/lovable-uploads/bd77f65c-520d-48ab-8374-5320e075ddee.png"
-            alt="MRK Logo"
-            className="w-32 h-32 mx-auto mb-8 rounded-full shadow-lg hover:shadow-2xl transition-all duration-300"
-          />
+          <div className="relative w-48 h-48 mx-auto mb-8">
+            {/* Glowing circle animation */}
+            <div className="absolute inset-0 rounded-full animate-spin-slow bg-gradient-to-r from-green-500/50 to-emerald-300/50 blur-xl" />
+            <div className="absolute inset-0 rounded-full animate-spin-reverse-slow bg-gradient-to-r from-green-400/50 to-emerald-200/50 blur-lg" />
+            {/* Profile image */}
+            <motion.div
+              className="relative w-32 h-32 mx-auto rounded-full overflow-hidden border-4 border-white/10"
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+            >
+              <img
+                src="/lovable-uploads/bd77f65c-520d-48ab-8374-5320e075ddee.png"
+                alt="Profile"
+                className="w-full h-full object-cover"
+              />
+            </motion.div>
+          </div>
+
           <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
             भारत सिंग
           </h1>
