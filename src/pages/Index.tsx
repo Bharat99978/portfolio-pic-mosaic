@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Github, Instagram, Twitter, Phone } from "lucide-react";
 
 const Index = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -7,6 +8,33 @@ const Index = () => {
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  const socialLinks = [
+    {
+      name: "GitHub",
+      icon: <Github className="w-6 h-6" />,
+      url: "https://github.com/Bharat99978",
+      color: "hover:text-[#333]"
+    },
+    {
+      name: "Instagram",
+      icon: <Instagram className="w-6 h-6" />,
+      url: "https://www.instagram.com/freefireindia899h/?hl=ur",
+      color: "hover:text-[#E1306C]"
+    },
+    {
+      name: "Twitter",
+      icon: <Twitter className="w-6 h-6" />,
+      url: "https://x.com/FireBharat",
+      color: "hover:text-[#1DA1F2]"
+    },
+    {
+      name: "WhatsApp",
+      icon: <Phone className="w-6 h-6" />,
+      url: "https://wa.me/+919322461670",
+      color: "hover:text-[#25D366]"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -26,9 +54,33 @@ const Index = () => {
           <h1 className="text-4xl md:text-6xl font-bold mb-4">
             भारत सिंग
           </h1>
-          <p className="text-xl md:text-2xl text-secondary">
+          <p className="text-xl md:text-2xl text-secondary mb-8">
             Developer & Designer
           </p>
+
+          {/* Social Media Links */}
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.5, duration: 0.5 }}
+            className="flex justify-center gap-6 mt-6"
+          >
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={link.name}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`transform transition-all duration-300 hover:scale-110 ${link.color}`}
+                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * index }}
+              >
+                {link.icon}
+              </motion.a>
+            ))}
+          </motion.div>
         </motion.div>
       </section>
 
